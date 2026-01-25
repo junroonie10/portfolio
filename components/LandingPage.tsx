@@ -12,6 +12,27 @@ export const LandingPage: React.FC<LandingPageProps> = ({ setPage }) => {
   const linkedinUrl = SOCIAL_LINKS.find(l => l.name === 'LinkedIn')?.url || '#';
   const emailUrl = SOCIAL_LINKS.find(l => l.name === 'Email')?.url || '#';
 
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    const target = e.target as HTMLImageElement;
+    const currentSrc = target.src;
+    
+    // Attempt common filename variations before giving up
+    if (currentSrc.endsWith('hyunjun-landing.jpg')) {
+       // Try Capitalized first letter
+       target.src = '/Hyunjun-Landing.jpg';
+    } else if (currentSrc.endsWith('Hyunjun-Landing.jpg')) {
+       // Try all uppercase extension
+       target.src = '/hyunjun-landing.JPG';
+    } else if (currentSrc.endsWith('hyunjun-landing.JPG')) {
+       // Try jpeg extension
+       target.src = '/hyunjun-landing.jpeg';
+    } else {
+       // Give up and hide image
+       target.style.display = 'none';
+       console.error("Could not load profile image. Please ensure 'hyunjun-landing.jpg' exists in the 'public' folder.");
+    }
+  };
+
   return (
     <div className="flex flex-col md:flex-row h-screen w-full bg-white overflow-hidden font-sans">
       {/* Left Section */}
@@ -82,16 +103,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({ setPage }) => {
           src={PROFILE_IMAGE_URL}
           alt="Hyunjun You - Portrait"
           className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-[2s]"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.style.display = 'none';
-            // Show a fallback background or text if needed via parent styling
-            console.error(`Failed to load image at ${PROFILE_IMAGE_URL}. Check filename extension (jpg vs jpeg) and case sensitivity.`);
-          }}
+          onError={handleImageError}
         />
         {/* Fallback text if image fails (hidden by image if loaded) */}
         <div className="absolute inset-0 flex items-center justify-center text-gray-300 -z-10">
-           Loading Image...
+           Loading...
         </div>
       </motion.div>
     </div>
