@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronDown, Linkedin, Mail, ArrowLeft } from 'lucide-react';
 import { Navigation } from './components/Navigation';
 import { ProjectDetail } from './components/ProjectDetail';
-import { AIChat } from './components/AIChat';
+// import { AIChat } from './components/AIChat';
 import { LandingPage } from './components/LandingPage';
 import { PageView, Project } from './types';
 import { PROJECTS, SOCIAL_LINKS, PAGE_CONTENT } from './constants';
@@ -38,7 +38,7 @@ const App: React.FC = () => {
     return (
       <div className="min-h-screen bg-white text-black">
         <LandingPage setPage={handlePageChange} />
-        <AIChat />
+        {/* <AIChat /> */}
       </div>
     );
   }
@@ -315,7 +315,7 @@ const App: React.FC = () => {
         )}
       </AnimatePresence>
 
-      <AIChat />
+      {/* <AIChat /> */}
     </div>
   );
 };
