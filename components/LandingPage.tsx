@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Linkedin } from 'lucide-react';
 import { PageView } from '../types';
-import { PORTFOLIO_OWNER, ROLE, SOCIAL_LINKS } from '../constants';
+import { PORTFOLIO_OWNER, ROLE, SOCIAL_LINKS, PROFILE_IMAGE_URL } from '../constants';
 
 interface LandingPageProps {
   setPage: (page: PageView) => void;
@@ -79,7 +79,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ setPage }) => {
         className="w-full md:w-1/2 h-1/2 md:h-full relative overflow-hidden bg-gray-100"
       >
         <img 
-          src="/hyunjun-landing.jpg"
+          src={PROFILE_IMAGE_URL}
           alt="Hyunjun You - Portrait"
           className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-[2s]"
         />

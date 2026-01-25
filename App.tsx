@@ -6,7 +6,7 @@ import { ProjectDetail } from './components/ProjectDetail';
 // import { AIChat } from './components/AIChat';
 import { LandingPage } from './components/LandingPage';
 import { PageView, Project } from './types';
-import { PROJECTS, SOCIAL_LINKS, PAGE_CONTENT } from './constants';
+import { PROJECTS, SOCIAL_LINKS, PAGE_CONTENT, RESUME_URL } from './constants';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageView>('landing');
@@ -77,7 +77,7 @@ const App: React.FC = () => {
                  
                  <div className="flex flex-wrap gap-4">
                    <a 
-                     href="/resume.pdf" 
+                     href={RESUME_URL}
                      target="_blank"
                      rel="noopener noreferrer"
                      className="px-8 py-3 rounded-full border border-slate-900 text-slate-900 font-medium text-sm hover:bg-slate-900 hover:text-white transition-all duration-300"

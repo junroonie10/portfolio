@@ -3,6 +3,12 @@ import { Project } from './types';
 export const PORTFOLIO_OWNER = "Hyunjun You";
 export const ROLE = "Undergraduate Student and Hobby Photographer at UofT";
 
+// --- ASSET PATHS ---
+// Place these files in your 'public' folder.
+// Example: public/resume.pdf -> "/resume.pdf"
+export const RESUME_URL = "/resume.pdf"; 
+export const PROFILE_IMAGE_URL = "/hyunjun-landing.jpg"; // Replace with your actual profile photo filename
+
 export const PAGE_CONTENT = {
   rotman: {
     title: 'Rotman Commerce',
@@ -23,7 +29,7 @@ export const PROJECTS: Project[] = [
     section: 'rotman',
     year: '2026',
     description: 'In-depth analysis of consumer trends and competitive landscape.',
-    imageUrl: 'https://picsum.photos/seed/cosmetics/800/1000',
+    imageUrl: 'https://picsum.photos/seed/cosmetics/800/1000', // Replace with: "/images/cosmetics.jpg"
     tags: ['Market Research', 'Data Analysis', 'Consumer Behavior'],
     details: 'A comprehensive study of the North American cosmetics industry, focusing on emerging indie brands, shifting consumer preferences towards sustainability, and supply chain challenges.'
   },
@@ -80,10 +86,10 @@ export const PROJECTS: Project[] = [
     section: 'photography',
     year: '2023-2024',
     description: 'St. George campus and city life in The 6ix.',
-    imageUrl: 'https://picsum.photos/seed/toronto-cover/900/1200', // Cover image
+    imageUrl: 'https://picsum.photos/seed/toronto-cover/900/1200',
     tags: ['Street', 'Urban', 'Canada'],
     gallery: [
-      'https://picsum.photos/seed/tor1/800/1000',
+      'https://picsum.photos/seed/tor1/800/1000', // Replace with: "/images/toronto/1.jpg"
       'https://picsum.photos/seed/tor2/800/600',
       'https://picsum.photos/seed/tor3/800/1200',
       'https://picsum.photos/seed/tor4/800/800',
