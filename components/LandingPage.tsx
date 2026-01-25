@@ -76,13 +76,23 @@ export const LandingPage: React.FC<LandingPageProps> = ({ setPage }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2 }}
-        className="w-full md:w-1/2 h-1/2 md:h-full relative overflow-hidden bg-gray-100"
+        className="w-full md:w-1/2 h-1/2 md:h-full relative overflow-hidden bg-gray-100 flex items-center justify-center"
       >
         <img 
           src={PROFILE_IMAGE_URL}
           alt="Hyunjun You - Portrait"
           className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-[2s]"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.style.display = 'none';
+            // Show a fallback background or text if needed via parent styling
+            console.error(`Failed to load image at ${PROFILE_IMAGE_URL}. Check filename extension (jpg vs jpeg) and case sensitivity.`);
+          }}
         />
+        {/* Fallback text if image fails (hidden by image if loaded) */}
+        <div className="absolute inset-0 flex items-center justify-center text-gray-300 -z-10">
+           Loading Image...
+        </div>
       </motion.div>
     </div>
   );
