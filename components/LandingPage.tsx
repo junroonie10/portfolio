@@ -100,7 +100,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ setPage }) => {
       >
         <img 
           src={PROFILE_IMAGE_URL}
-          alt="hyunjun-landing.jpeg"
+          alt="Hyunjun You - Portrait"
           className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-[2s]"
           onError={handleImageError}
         />
