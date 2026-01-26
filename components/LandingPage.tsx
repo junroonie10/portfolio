@@ -14,20 +14,19 @@ export const LandingPage: React.FC<LandingPageProps> = ({ setPage }) => {
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     const target = e.target as HTMLImageElement;
-    const currentSrc = target.src;
+    const currentSrc = target.src.toLowerCase();
     
-    // Attempt common filename variations before giving up
+    // Logic: If it failed, try the next likely candidate.
+    // Order: default -> .jpeg -> .png -> .JPG (capital) -> hide
+    
     if (currentSrc.endsWith('hyunjun-landing.jpg')) {
-       // Try Capitalized first letter
-       target.src = '/Hyunjun-Landing.jpg';
-    } else if (currentSrc.endsWith('Hyunjun-Landing.jpg')) {
-       // Try all uppercase extension
-       target.src = '/hyunjun-landing.JPG';
-    } else if (currentSrc.endsWith('hyunjun-landing.JPG')) {
-       // Try jpeg extension
+       // Failed to load .jpg, try .jpeg
        target.src = '/hyunjun-landing.jpeg';
-    } else {
-       // Give up and hide image
+    } else if (currentSrc.endsWith('hyunjun-landing.jpeg')) {
+       // Failed to load .jpeg, try Capitalized .jpg (often an issue on Git/Linux)
+       target.src = '/Hyunjun-Landing.jpg';
+    } else if (currentSrc.includes('hyunjun-landing')) {
+       // Final fallback attempt
        target.style.display = 'none';
        console.error("Could not load profile image. Please ensure 'hyunjun-landing.jpg' exists in the 'public' folder.");
     }

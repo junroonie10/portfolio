@@ -7,7 +7,7 @@ export const ROLE = "Undergraduate Student and Hobby Photographer at UofT";
 // Place these files in your 'public' folder.
 // Example: public/resume.pdf -> "/resume.pdf"
 export const RESUME_URL = "/resume.pdf"; 
-export const PROFILE_IMAGE_URL = "/hyunjun-landing.jpeg"; // Replace with your actual profile photo filename
+export const PROFILE_IMAGE_URL = "/hyunjun-landing.jpg"; // Changed to .jpg as default
 
 export const PAGE_CONTENT = {
   rotman: {
