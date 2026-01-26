@@ -7,7 +7,7 @@ export const ROLE = "Undergraduate Student and Hobby Photographer at UofT";
 // Place these files in your 'public' folder.
 // Example: public/resume.pdf -> "/resume.pdf"
 export const RESUME_URL = "/resume.pdf"; 
-export const PROFILE_IMAGE_URL = "/hyunjun-landing.jpg"; // Changed to .jpg as default
+export const PROFILE_IMAGE_URL = "/hyunjun-landing.jpeg"; // Changed to .jpeg as default
 
 export const PAGE_CONTENT = {
   rotman: {
@@ -135,9 +135,9 @@ export const PROJECTS: Project[] = [
   }
 ];
 
-export const BIO_TEXT = `Welcome to my portfolio! My name is Hyunjun You. I am a student at the University of Toronto pursuing a degree in Commerce (Rotman Commerce). I am passionate about the intersection of finance and technology.
+export const BIO_TEXT = `Welcome to my portfolio! My name is Hyunjun You. I am a student at the University of Toronto pursuing a degree in Commerce (Rotman Commerce). I am passionate about the intersection of consulting and technology.
 
-I also am a TA for introductory management courses and am involved in student organizations where I work to make financial literacy more accessible for younger students. 
+I also am an active case competition participant and am involved in student organizations where I work to make business environment more accessible for international students. 
 
 Outside of academics, I am an avid photographer, capturing moments from my travels and daily life. I believe in the power of visual storytelling to convey emotions that words sometimes cannot.`;
 
