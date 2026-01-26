@@ -31,7 +31,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ setPage }) => {
        console.error("Could not load profile image. Please ensure 'hyunjun-landing.jpeg' exists in the 'public' folder.");
     }
   };
-ㅇ
+
   return (
     <div className="flex flex-col md:flex-row h-screen w-full bg-white overflow-hidden font-sans">
       {/* Left Section */}
