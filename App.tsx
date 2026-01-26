@@ -61,7 +61,7 @@ const App: React.FC = () => {
                   <img 
                     src="https://drive.google.com/thumbnail?sz=w1000&id=1wTNsvvxrtfHwhgp8SGzabjzNSGg6Xezr" 
                     alt="Hiking" 
-                    className="w-full h-auto object-cover rounded-sm shadow-sm"
+                    className="w-full aspect-square object-cover rounded-sm shadow-sm"
                   />
                </div>
 
