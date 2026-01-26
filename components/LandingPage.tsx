@@ -20,7 +20,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ setPage }) => {
     // Fallback logic:
     // 1. If it's the main .jpg, try .jpeg
     // 2. If all else fails, show a stylish placeholder from Unsplash
-    if (target.src.endsWith('hyunjun-landing.jpg')) {
+    if (target.src.endsWith('hyunjun-landing.jpeg')) {
       target.src = '/hyunjun-landing.jpeg';
     } else {
       // Reliable fallback image (Professional minimal portrait)
