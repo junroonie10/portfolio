@@ -77,7 +77,7 @@ const App: React.FC = () => {
                  
                  <div className="flex flex-wrap gap-4">
                    <a 
-                     href={RESUME_URL}
+                     href="/resume.pdf"
                      target="_blank"
                      rel="noopener noreferrer"
                      className="px-8 py-3 rounded-full border border-slate-900 text-slate-900 font-medium text-sm hover:bg-slate-900 hover:text-white transition-all duration-300"
