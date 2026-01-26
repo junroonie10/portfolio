@@ -14,18 +14,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({ setPage }) => {
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     const target = e.target as HTMLImageElement;
-    // Prevent infinite loops
-    target.onerror = null; 
-    
-    // Fallback logic:
-    // 1. If it's the main .jpg, try .jpeg
-    // 2. If all else fails, show a stylish placeholder from Unsplash
-    if (target.src.endsWith('hyunjun-landing.jpeg')) {
-      target.src = '/hyunjun-landing.jpeg';
-    } else {
-      // Reliable fallback image (Professional minimal portrait)
-      target.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop&sat=-100';
-    }
+    target.onerror = null; // Prevent infinite loop
+    // Fallback to a high-quality placeholder if the main image fails
+    target.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop&sat=-100';
   };
 
   return (
@@ -98,7 +89,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ setPage }) => {
           src={PROFILE_IMAGE_URL}
           alt="Hyunjun You - Portrait"
           className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-[2s]"
-          // onError={handleImageError}
+          onError={handleImageError}
           referrerPolicy="no-referrer"
         />
       </motion.div>
