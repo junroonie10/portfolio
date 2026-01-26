@@ -19,16 +19,16 @@ export const LandingPage: React.FC<LandingPageProps> = ({ setPage }) => {
     // Logic: If it failed, try the next likely candidate.
     // Order: default -> .jpeg -> .png -> .JPG (capital) -> hide
     
-    if (currentSrc.endsWith('hyunjun-landing.jpg')) {
+    if (currentSrc.endsWith('hyunjun-landing.jpeg')) {
        // Failed to load .jpg, try .jpeg
        target.src = '/hyunjun-landing.jpeg';
     } else if (currentSrc.endsWith('hyunjun-landing.jpeg')) {
        // Failed to load .jpeg, try Capitalized .jpg (often an issue on Git/Linux)
-       target.src = '/Hyunjun-Landing.jpg';
+       target.src = '/Hyunjun-Landing.jpeg';
     } else if (currentSrc.includes('hyunjun-landing')) {
        // Final fallback attempt
        target.style.display = 'none';
-       console.error("Could not load profile image. Please ensure 'hyunjun-landing.jpg' exists in the 'public' folder.");
+       console.error("Could not load profile image. Please ensure 'hyunjun-landing.jpeg' exists in the 'public' folder.");
     }
   };
 
