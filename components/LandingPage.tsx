@@ -98,7 +98,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ setPage }) => {
           src={PROFILE_IMAGE_URL}
           alt="Hyunjun You - Portrait"
           className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-[2s]"
-          onError={handleImageError}
+          // onError={handleImageError}
         />
       </motion.div>
     </div>
