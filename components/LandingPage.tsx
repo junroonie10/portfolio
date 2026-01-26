@@ -99,6 +99,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ setPage }) => {
           alt="Hyunjun You - Portrait"
           className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-[2s]"
           // onError={handleImageError}
+          referrerPolicy="no-referrer"
         />
       </motion.div>
     </div>
