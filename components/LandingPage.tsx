@@ -31,7 +31,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ setPage }) => {
        console.error("Could not load profile image. Please ensure 'hyunjun-landing.jpeg' exists in the 'public' folder.");
     }
   };
-
+ㅇ
   return (
     <div className="flex flex-col md:flex-row h-screen w-full bg-white overflow-hidden font-sans">
       {/* Left Section */}
@@ -100,7 +100,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ setPage }) => {
       >
         <img 
           src={PROFILE_IMAGE_URL}
-          alt="Hyunjun You - Portrait"
+          alt="hyunjun-landing.jpeg"
           className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-[2s]"
           onError={handleImageError}
         />
