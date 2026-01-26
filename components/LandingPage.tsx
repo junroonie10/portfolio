@@ -14,21 +14,17 @@ export const LandingPage: React.FC<LandingPageProps> = ({ setPage }) => {
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     const target = e.target as HTMLImageElement;
-    const currentSrc = target.src.toLowerCase();
+    // Prevent infinite loops
+    target.onerror = null; 
     
-    // Logic: If it failed, try the next likely candidate.
-    // Order: default -> .jpeg -> .png -> .JPG (capital) -> hide
-    
-    if (currentSrc.endsWith('hyunjun-landing.jpeg')) {
-       // Failed to load .jpg, try .jpeg
-       target.src = '/hyunjun-landing.jpeg';
-    } else if (currentSrc.endsWith('hyunjun-landing.jpeg')) {
-       // Failed to load .jpeg, try Capitalized .jpg (often an issue on Git/Linux)
-       target.src = '/Hyunjun-Landing.jpeg';
-    } else if (currentSrc.includes('hyunjun-landing')) {
-       // Final fallback attempt
-       target.style.display = 'none';
-       console.error("Could not load profile image. Please ensure 'hyunjun-landing.jpeg' exists in the 'public' folder.");
+    // Fallback logic:
+    // 1. If it's the main .jpg, try .jpeg
+    // 2. If all else fails, show a stylish placeholder from Unsplash
+    if (target.src.endsWith('hyunjun-landing.jpg')) {
+      target.src = '/hyunjun-landing.jpeg';
+    } else {
+      // Reliable fallback image (Professional minimal portrait)
+      target.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop&sat=-100';
     }
   };
 
@@ -104,10 +100,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({ setPage }) => {
           className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-[2s]"
           onError={handleImageError}
         />
-        {/* Fallback text if image fails (hidden by image if loaded) */}
-        <div className="absolute inset-0 flex items-center justify-center text-gray-300 -z-10">
-           Loading...
-        </div>
       </motion.div>
     </div>
   );

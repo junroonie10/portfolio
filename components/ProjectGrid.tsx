@@ -8,6 +8,13 @@ interface ProjectGridProps {
 }
 
 export const ProjectGrid: React.FC<ProjectGridProps> = ({ onProjectClick }) => {
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+     const target = e.target as HTMLImageElement;
+     target.onerror = null; 
+     // Fallback to a geometric placeholder pattern if picsum fails
+     target.src = 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=800&auto=format&fit=crop';
+  };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-8 gap-y-16 pb-24">
       {PROJECTS.map((project, index) => (
@@ -25,6 +32,7 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({ onProjectClick }) => {
               alt={project.title}
               className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter grayscale group-hover:grayscale-0"
               loading="lazy"
+              onError={handleImageError}
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
           </div>

@@ -9,6 +9,12 @@ interface ProjectDetailProps {
 }
 
 export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose }) => {
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+     const target = e.target as HTMLImageElement;
+     target.onerror = null; 
+     target.src = 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1200&auto=format&fit=crop';
+  };
+
   return (
     <motion.div 
       initial={{ opacity: 0 }}
@@ -33,6 +39,7 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose }
               src={project.imageUrl} 
               alt={project.title}
               className="w-full h-auto object-cover max-h-[80vh] shadow-xl"
+              onError={handleImageError}
             />
         </div>
 
