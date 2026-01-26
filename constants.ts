@@ -7,7 +7,7 @@ export const ROLE = "Undergraduate Student and Hobby Photographer at UofT";
 // Place these files in your 'public' folder.
 // Example: public/resume.pdf -> "/resume.pdf"
 export const RESUME_URL = "/resume.pdf"; 
-export const PROFILE_IMAGE_URL = "https://drive.google.com/uc?export=view&id=1dkLID7htn8caTSYC7pGcwAfTCTnjAJar"; 
+export const PROFILE_IMAGE_URL = "https://drive.google.com/thumbnail?sz=w1000&id=1dkLID7htn8caTSYC7pGcwAfTCTnjAJar"; 
 
 export const PAGE_CONTENT = {
   rotman: {
