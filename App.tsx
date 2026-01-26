@@ -59,7 +59,7 @@ const App: React.FC = () => {
                {/* Left: Image */}
                <div className="w-full md:w-1/2">
                   <img 
-                    src="https://picsum.photos/seed/hiking/1200/800" 
+                    src="https://drive.google.com/thumbnail?sz=w1000&id=1wTNsvvxrtfHwhgp8SGzabjzNSGg6Xezr" 
                     alt="Hiking" 
                     className="w-full h-auto object-cover rounded-sm shadow-sm"
                   />
