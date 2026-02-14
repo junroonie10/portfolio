@@ -6,7 +6,7 @@ import { ProjectDetail } from './components/ProjectDetail';
 // import { AIChat } from './components/AIChat';
 import { LandingPage } from './components/LandingPage';
 import { PageView, Project } from './types';
-import { PROJECTS, SOCIAL_LINKS, PAGE_CONTENT, RESUME_URL } from './constants';
+import { PROJECTS, SOCIAL_LINKS, PAGE_CONTENT, RESUME_URL, BIO_TEXT } from './constants';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageView>('landing');
@@ -68,16 +68,12 @@ const App: React.FC = () => {
                {/* Right: Text */}
                <div className="w-full md:w-1/2 flex flex-col justify-between">
                  <p className="text-lg leading-relaxed text-gray-700 font-light whitespace-pre-line mb-10">
-                   Welcome to my portfolio! My name is Hyunjun You. I am a student at the University of Toronto pursuing a degree in Commerce (Rotman Commerce). I am passionate about the intersection of finance and technology.
-                   <br /><br />
-                   I also am a TA for introductory management courses and am involved in student organizations where I work to make financial literacy more accessible for younger students. 
-                   <br /><br />
-                   Outside of academics, I am an avid photographer, capturing moments from my travels and daily life. I believe in the power of visual storytelling to convey emotions that words sometimes cannot.
+                   {BIO_TEXT}
                  </p>
                  
                  <div className="flex flex-wrap gap-4">
                    <a 
-                     href="/resume.pdf"
+                     href={RESUME_URL}
                      target="_blank"
                      rel="noopener noreferrer"
                      className="px-8 py-3 rounded-full border border-slate-900 text-slate-900 font-medium text-sm hover:bg-slate-900 hover:text-white transition-all duration-300"
