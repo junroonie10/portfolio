@@ -9,6 +9,7 @@ export interface Project {
   tags: string[];
   details?: string;
   gallery?: string[]; // Array of image URLs for photography albums
+  content?: string[]; // Array of document or image URLs for detailed view (e.g. ['/file.pdf', '/image.jpg'])
 }
 
 export type PageView = 'landing' | 'rotman' | 'photography' | 'about' | 'contact';

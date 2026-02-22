@@ -6,8 +6,8 @@ export const ROLE = "Undergraduate Student and Hobby Photographer at UofT";
 // --- ASSET PATHS ---
 // Place these files in your 'public' folder.
 // Example: public/resume.pdf -> "/resume.pdf"
-export const RESUME_URL = "/resume.pdf"; 
-export const PROFILE_IMAGE_URL = "https://drive.google.com/thumbnail?sz=w1000&id=1dkLID7htn8caTSYC7pGcwAfTCTnjAJar"; 
+export const RESUME_URL = "/resume.pdf";
+export const PROFILE_IMAGE_URL = "https://drive.google.com/thumbnail?sz=w1000&id=1dkLID7htn8caTSYC7pGcwAfTCTnjAJar";
 
 export const PAGE_CONTENT = {
   rotman: {
@@ -42,7 +42,11 @@ export const PROJECTS: Project[] = [
     description: 'Strategic consulting proposal for a major tech client.',
     imageUrl: 'https://picsum.photos/seed/deloitte/800/600',
     tags: ['Consulting', 'Strategy', 'Teamwork'],
-    details: 'Finalist presentation involving a go-to-market strategy for a cloud computing solution. Focused on financial viability and implementation timelines.'
+    details: 'Finalist presentation involving a go-to-market strategy for a cloud computing solution. Focused on financial viability and implementation timelines.',
+    content: [
+      '/deloitte.pdf', // PDF to display
+      '/deloitte.jpg'  // JPG to display
+    ]
   },
   {
     id: 'rotman-3',
