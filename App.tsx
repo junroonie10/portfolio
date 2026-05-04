@@ -21,22 +21,9 @@ const fadeUp = {
 };
 
 const AWARD_STYLE: Record<string, string> = {
-  '2nd Place':     'bg-[#FBF5E6] text-[#9A6E00] border border-[#D4A853]/40',
+  '2nd Place':     'bg-[#FBF5E6] text-[#9A6E00] border border-[#D4A853]/50',
   'Semi-finalist': 'bg-[#F0F4F8] text-[#1E3048] border border-[#1E3048]/20',
 };
-
-/* ── Section header ───────────────────────────────── */
-const SectionHeader = ({
-  eyebrow, title, subtitle,
-}: { eyebrow: string; title: string; subtitle?: string }) => (
-  <div className="mb-10 md:mb-12">
-    <p className="text-xs font-medium tracking-[0.2em] text-[#D4A853] uppercase mb-2">{eyebrow}</p>
-    <h1 className="font-serif text-2xl md:text-4xl font-bold text-[#0F1C2E] leading-tight">{title}</h1>
-    {subtitle && (
-      <p className="text-slate-500 text-sm mt-2 leading-relaxed max-w-xl">{subtitle}</p>
-    )}
-  </div>
-);
 
 /* ── Impact stats ─────────────────────────────────── */
 const StatRow = ({ stats }: { stats: { value: string; label: string }[] }) => (
@@ -72,82 +59,89 @@ const App: React.FC = () => {
   const renderContent = () => {
     switch (currentPage) {
 
-      /* ──────────────────────── ABOUT ──────────────────────── */
+      /* ══════════════════════════════════════════════
+         ABOUT
+      ══════════════════════════════════════════════ */
       case 'about':
         return (
           <motion.div {...fadeUp} transition={{ duration: 0.45 }}
-            className="w-full max-w-4xl mx-auto">
-            <div className="flex flex-col md:flex-row gap-10 md:gap-14 items-start">
+            className="w-full max-w-5xl mx-auto">
 
+            {/* ── Page Header ── */}
+            <div className="mb-12 md:mb-16">
+              <p className="text-xs font-medium tracking-[0.22em] text-[#D4A853] uppercase mb-3">
+                About Me
+              </p>
+              <h1 className="font-serif text-3xl md:text-5xl font-bold text-[#0F1C2E] leading-tight mb-4">
+                Hyunjun You
+              </h1>
+              <p className="text-slate-500 text-base max-w-2xl leading-relaxed">
+                Welcome to my portfolio. I'm a commerce student at Rotman (University of Toronto),
+                focusing on strategy and data science — passionate about consulting, product, and
+                how rigorous thinking translates into real decisions. Feel free to explore.
+              </p>
+            </div>
+
+            {/* ── Two-column: photo + bio ── */}
+            <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-start mb-14">
               {/* Photo */}
-              <div className="w-full md:w-[38%] shrink-0">
+              <div className="w-full md:w-[42%] shrink-0">
                 <img
                   src="https://drive.google.com/thumbnail?sz=w1000&id=1wTNsvvxrtfHwhgp8SGzabjzNSGg6Xezr"
                   alt="Hyunjun You"
-                  className="w-full aspect-[4/5] object-cover object-bottom shadow-sm"
+                  className="w-full aspect-[4/5] object-cover object-bottom"
                 />
               </div>
 
-              {/* Content */}
-              <div className="w-full md:w-[62%] flex flex-col gap-7">
+              {/* Bio + Skills */}
+              <div className="w-full md:w-[58%] flex flex-col gap-8 md:pt-2">
                 <div>
-                  <p className="text-xs font-medium tracking-[0.2em] text-[#D4A853] uppercase mb-3">
-                    About
-                  </p>
-                  <h1 className="font-serif text-2xl md:text-3xl font-bold text-[#0F1C2E] mb-1">
-                    Hyunjun You
-                  </h1>
-                  <p className="text-slate-500 text-sm mb-5">
+                  <p className="text-slate-500 text-sm mb-1">
                     Rotman Commerce '27 · Strategy & Data Science · Minor in Economics
                   </p>
-                  <p className="text-slate-600 text-sm leading-7 whitespace-pre-line">
+                  <p className="text-xs text-slate-400 mb-6">GPA 3.80 / 4.00 · Toronto, ON</p>
+                  <p className="text-slate-700 text-sm leading-7 whitespace-pre-line">
                     {BIO_TEXT}
                   </p>
                 </div>
 
-                {/* Skills */}
-                <div>
-                  <h2 className="text-xs font-medium tracking-[0.2em] text-[#D4A853] uppercase mb-4">
+                {/* Skills — clean label + tag layout */}
+                <div className="pt-4 border-t border-slate-100">
+                  <p className="text-xs font-medium tracking-[0.2em] text-[#D4A853] uppercase mb-5">
                     Skills
-                  </h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  </p>
+                  <div className="flex flex-col gap-4">
                     {SKILLS.map(group => (
-                      <div key={group.category}>
-                        <p className="text-xs font-semibold text-[#0F1C2E] mb-2">
+                      <div key={group.category} className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-6">
+                        <p className="text-xs font-semibold text-[#0F1C2E] w-36 shrink-0 pt-0.5">
                           {group.category}
                         </p>
-                        <div className="flex flex-wrap gap-1.5">
-                          {group.items.map(skill => (
-                            <span key={skill}
-                              className="text-xs px-2.5 py-1 bg-[#0F1C2E]/5
-                                         border border-[#0F1C2E]/10 text-slate-600">
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
+                        <p className="text-sm text-slate-500">
+                          {group.items.join(' · ')}
+                        </p>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 {/* CTAs */}
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-3 pt-2">
                   <a href={RESUME_URL} target="_blank" rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-5 py-2.5
                                bg-[#0F1C2E] text-white text-sm font-medium
                                hover:bg-[#1a2d42] transition-colors">
-                    Resume <ExternalLink size={13} />
+                    Download Resume <ExternalLink size={13} />
                   </a>
                   <a href={SOCIAL_LINKS.find(l => l.name === 'LinkedIn')?.url || '#'}
                     target="_blank" rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-5 py-2.5
-                               border border-[#0F1C2E]/20 text-[#0F1C2E] text-sm font-medium
+                               border border-[#0F1C2E]/20 text-[#0F1C2E] text-sm
                                hover:border-[#0F1C2E] transition-colors">
                     <Linkedin size={14} /> LinkedIn
                   </a>
                   <a href={SOCIAL_LINKS.find(l => l.name === 'Email')?.url || '#'}
                     className="inline-flex items-center gap-2 px-5 py-2.5
-                               border border-[#0F1C2E]/20 text-[#0F1C2E] text-sm font-medium
+                               border border-[#0F1C2E]/20 text-[#0F1C2E] text-sm
                                hover:border-[#0F1C2E] transition-colors">
                     <Mail size={14} /> Email
                   </a>
@@ -157,7 +151,9 @@ const App: React.FC = () => {
           </motion.div>
         );
 
-      /* ──────────────────── EXPERIENCE ─────────────────────── */
+      /* ══════════════════════════════════════════════
+         EXPERIENCE
+      ══════════════════════════════════════════════ */
       case 'experience': {
         const professional = EXPERIENCE.filter(e => e.type === 'professional');
         const leadership   = EXPERIENCE.filter(e => e.type === 'leadership');
@@ -168,41 +164,29 @@ const App: React.FC = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay }}
-            className="pl-4 border-l-2 border-[#D4A853]/50"
+            className="pl-5 border-l-2 border-[#D4A853]/50"
           >
-            {/* Company + period row */}
-            <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between
-                            gap-0.5 sm:gap-4 mb-1">
+            <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-4 mb-1">
               <h3 className="text-base font-semibold text-[#0F1C2E]">{exp.company}</h3>
               <span className="text-xs font-mono text-slate-400 shrink-0">
                 {exp.period} · {exp.location}
               </span>
             </div>
-
-            {/* Role */}
             <p className="text-sm text-slate-500 italic mb-3">{exp.role}</p>
-
-            {/* Stats */}
-            {exp.stats && exp.stats.length > 0 && (
-              <StatRow stats={exp.stats} />
-            )}
-
-            {/* Bullets */}
+            {exp.stats && exp.stats.length > 0 && <StatRow stats={exp.stats} />}
             <ul className="mt-3 space-y-2">
               {exp.bullets.map((b, j) => (
-                <li key={j} className="text-sm text-slate-600 leading-6">
-                  {b}
-                </li>
+                <li key={j} className="text-sm text-slate-600 leading-6">{b}</li>
               ))}
             </ul>
           </motion.div>
         );
 
-        const ExpSection = ({
-          label, items, baseDelay = 0,
-        }: { label: string; items: typeof EXPERIENCE; baseDelay?: number }) => (
-          <div className="mb-12">
-            <h2 className="text-xs font-medium tracking-[0.2em] text-[#D4A853] uppercase mb-6">
+        const ExpSection = ({ label, items, baseDelay = 0 }: {
+          label: string; items: typeof EXPERIENCE; baseDelay?: number;
+        }) => (
+          <div className="mb-14">
+            <h2 className="text-xs font-medium tracking-[0.2em] text-[#D4A853] uppercase mb-7">
               {label}
             </h2>
             <div className="flex flex-col gap-10">
@@ -216,7 +200,19 @@ const App: React.FC = () => {
         return (
           <motion.div {...fadeUp} transition={{ duration: 0.45 }}
             className="w-full max-w-3xl mx-auto">
-            <SectionHeader eyebrow="Experience" title="Professional Background" />
+            {/* Page Header */}
+            <div className="mb-12 md:mb-16">
+              <p className="text-xs font-medium tracking-[0.22em] text-[#D4A853] uppercase mb-3">
+                Experience
+              </p>
+              <h1 className="font-serif text-3xl md:text-5xl font-bold text-[#0F1C2E] leading-tight mb-4">
+                Professional Background
+              </h1>
+              <p className="text-slate-500 text-base max-w-xl leading-relaxed">
+                My experience spans management consulting, strategy research, and operational leadership.
+                Feel free to click through for more detail on any role.
+              </p>
+            </div>
             <ExpSection label="Professional"     items={professional} baseDelay={0.1} />
             <ExpSection label="Leadership"       items={leadership}   baseDelay={0.15} />
             <ExpSection label="Military Service" items={military}     baseDelay={0.2} />
@@ -224,68 +220,68 @@ const App: React.FC = () => {
         );
       }
 
-      /* ──────────────────── COMPETITIONS ───────────────────── */
+      /* ══════════════════════════════════════════════
+         WORK & COMPETITIONS  —  2-col image grid
+      ══════════════════════════════════════════════ */
       case 'competitions': {
         const compProjects = PROJECTS.filter(p => p.section === 'competitions');
 
         return (
           <motion.div {...fadeUp} transition={{ duration: 0.45 }}
-            className="w-full max-w-4xl mx-auto">
-            <SectionHeader
-              eyebrow="Work & Competitions"
-              title="Projects & Case Competitions"
-              subtitle="Strategy projects, case competitions, and consulting work."
-            />
+            className="w-full max-w-5xl mx-auto">
 
-            <div className="flex flex-col gap-4">
+            {/* Page Header */}
+            <div className="mb-12 md:mb-16">
+              <p className="text-xs font-medium tracking-[0.22em] text-[#D4A853] uppercase mb-3">
+                Work & Competitions
+              </p>
+              <h1 className="font-serif text-3xl md:text-5xl font-bold text-[#0F1C2E] leading-tight mb-4">
+                Projects & Case Competitions
+              </h1>
+              <p className="text-slate-500 text-base max-w-2xl leading-relaxed">
+                A selection of strategy projects, case competitions, and consulting work.
+                Feel free to click on any project to see more detail.
+              </p>
+            </div>
+
+            {/* ── 2-column image grid (no borders) ── */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-12 pb-16">
               {compProjects.map((project, i) => (
                 <motion.div
                   key={project.id}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.06 }}
+                  transition={{ delay: i * 0.08 }}
                   onClick={() => setSelectedProject(project)}
-                  className="group flex flex-col sm:flex-row gap-5 p-5 bg-white
-                             border border-slate-100 hover:border-[#0F1C2E]/25
-                             hover:shadow-sm transition-all duration-300 cursor-pointer"
+                  className="group cursor-pointer"
                 >
-                  {/* Thumbnail — hidden on very small screens */}
-                  <div className="hidden sm:block w-28 h-24 overflow-hidden bg-slate-100 shrink-0">
+                  {/* Image — primary element */}
+                  <div className="aspect-[4/3] overflow-hidden bg-[#0F1C2E]/8 mb-4">
                     <img
-                      src={project.imageUrl} alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105
-                                 transition-transform duration-500 grayscale group-hover:grayscale-0"
+                      src={project.imageUrl}
+                      alt={project.title}
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0
+                                 group-hover:scale-105 transition-all duration-500"
                     />
                   </div>
 
-                  {/* Text */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-start justify-between gap-3 mb-1">
-                      <h3 className="text-sm font-semibold text-[#0F1C2E] leading-snug">
+                  {/* Text below image */}
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <h3 className="text-sm font-semibold text-[#0F1C2E] leading-snug mb-1
+                                     group-hover:text-[#D4A853] transition-colors">
                         {project.title}
                       </h3>
-                      {project.award && (
-                        <span className={`text-xs px-2.5 py-1 shrink-0 font-medium
-                          ${AWARD_STYLE[project.award] ?? 'bg-slate-50 text-slate-500 border border-slate-200'}`}>
-                          {project.award}
-                        </span>
-                      )}
+                      <p className="text-xs text-slate-400">
+                        {project.category} · {project.year}
+                      </p>
                     </div>
-                    <p className="text-xs text-slate-400 mb-2">
-                      {project.category} · {project.year}
-                    </p>
-                    <p className="text-sm text-slate-600 leading-relaxed">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-1.5 mt-3">
-                      {project.tags.map(tag => (
-                        <span key={tag}
-                          className="text-xs px-2 py-0.5 bg-[#0F1C2E]/5
-                                     text-[#0F1C2E]/55 border border-[#0F1C2E]/8">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+                    {project.award && (
+                      <span className={`text-xs px-2.5 py-1 shrink-0 font-medium whitespace-nowrap
+                        ${AWARD_STYLE[project.award] ?? 'bg-slate-50 text-slate-500 border border-slate-200'}`}>
+                        {project.award}
+                      </span>
+                    )}
                   </div>
                 </motion.div>
               ))}
@@ -294,11 +290,14 @@ const App: React.FC = () => {
         );
       }
 
-      /* ──────────────────── PHOTOGRAPHY ────────────────────── */
+      /* ══════════════════════════════════════════════
+         PHOTOGRAPHY
+      ══════════════════════════════════════════════ */
       case 'photography':
         if (selectedAlbum) {
           return (
-            <motion.div {...fadeUp} transition={{ duration: 0.35 }}>
+            <motion.div {...fadeUp} transition={{ duration: 0.35 }}
+              className="w-full max-w-5xl mx-auto">
               <button
                 onClick={() => { setSelectedAlbum(null); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                 className="group flex items-center gap-2 text-slate-400 hover:text-[#0F1C2E]
@@ -308,14 +307,14 @@ const App: React.FC = () => {
                 <span className="text-xs font-medium tracking-[0.15em] uppercase">Back</span>
               </button>
 
-              <div className="mb-10">
-                <p className="text-xs font-medium tracking-[0.2em] text-[#D4A853] uppercase mb-2">
+              <div className="mb-10 md:mb-14">
+                <p className="text-xs font-medium tracking-[0.22em] text-[#D4A853] uppercase mb-3">
                   Photography
                 </p>
-                <h1 className="font-serif text-3xl md:text-5xl font-bold text-[#0F1C2E] mb-1">
+                <h1 className="font-serif text-3xl md:text-5xl font-bold text-[#0F1C2E] mb-2">
                   {selectedAlbum.title}
                 </h1>
-                <p className="text-slate-400 text-sm">{selectedAlbum.description}</p>
+                <p className="text-slate-500 text-sm">{selectedAlbum.description}</p>
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3 pb-16">
@@ -324,7 +323,7 @@ const App: React.FC = () => {
                     initial={{ opacity: 0, scale: 0.97 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: idx * 0.04 }}
-                    className="relative aspect-[3/4] overflow-hidden bg-gray-100">
+                    className="relative aspect-[3/4] overflow-hidden bg-[#0F1C2E]/5">
                     <img src={url} alt={`${selectedAlbum.title} ${idx + 1}`}
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                       loading="lazy" />
@@ -337,31 +336,43 @@ const App: React.FC = () => {
 
         return (
           <motion.div {...fadeUp} transition={{ duration: 0.45 }}
-            className="w-full max-w-4xl mx-auto">
-            <SectionHeader
-              eyebrow="Photography"
-              title="Moments"
-              subtitle="Shot on iPhone. Toronto · Saigon · Seoul."
-            />
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pb-16">
+            className="w-full max-w-5xl mx-auto">
+
+            {/* Page Header */}
+            <div className="mb-12 md:mb-16">
+              <p className="text-xs font-medium tracking-[0.22em] text-[#D4A853] uppercase mb-3">
+                Photography
+              </p>
+              <h1 className="font-serif text-3xl md:text-5xl font-bold text-[#0F1C2E] leading-tight mb-4">
+                Moments
+              </h1>
+              <p className="text-slate-500 text-base max-w-xl leading-relaxed">
+                A collection of moments from Toronto, Saigon, and Seoul. Shot on iPhone.
+                Feel free to click on any album to explore.
+              </p>
+            </div>
+
+            {/* 2-col album grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-10 pb-16">
               {PROJECTS.filter(p => p.section === 'photography').map((project, idx) => (
                 <motion.div key={project.id}
                   initial={{ opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.1 }}
                   onClick={() => { setSelectedAlbum(project); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  className="group cursor-pointer relative aspect-[3/4] overflow-hidden">
-                  <img src={project.imageUrl} alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700
-                               group-hover:scale-110 grayscale group-hover:grayscale-0"
-                    loading="lazy" />
-                  <div className="absolute inset-0 bg-[#0F1C2E]/50 opacity-0 group-hover:opacity-100
-                                  transition-opacity duration-300 flex items-end p-5 md:p-6">
-                    <div>
-                      <h3 className="font-serif text-xl font-bold text-white">{project.title}</h3>
-                      <p className="text-white/60 text-xs mt-0.5">{project.year}</p>
-                    </div>
+                  className="group cursor-pointer">
+                  {/* Image */}
+                  <div className="aspect-[3/4] overflow-hidden bg-[#0F1C2E]/5 mb-3">
+                    <img src={project.imageUrl} alt={project.title}
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0
+                                 group-hover:scale-105 transition-all duration-500"
+                      loading="lazy" />
                   </div>
+                  {/* Title below */}
+                  <h3 className="text-sm font-semibold text-[#0F1C2E] group-hover:text-[#D4A853] transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-xs text-slate-400 mt-0.5">{project.year}</p>
                 </motion.div>
               ))}
             </div>
@@ -382,14 +393,11 @@ const App: React.FC = () => {
         isMobileMenuOpen={isMobileMenuOpen}
         toggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       />
-
-      {/* Padding: enough for nav height on both mobile (h-20) and desktop */}
-      <main className="min-h-screen pt-24 pb-16 px-5 md:px-14 lg:px-20">
+      <main className="min-h-screen pt-24 pb-20 px-5 md:px-14 lg:px-24">
         <AnimatePresence mode="wait">
           {renderContent()}
         </AnimatePresence>
       </main>
-
       <AnimatePresence>
         {selectedProject && (
           <ProjectDetail
