@@ -26,6 +26,10 @@ export const EXPERIENCE: ExperienceItem[] = [
     bullets: [
       'Incoming summer analyst role within the global management consulting firm\'s Seoul office',
     ],
+    stats: [
+      { value: 'Global MBB', label: 'Firm Tier' },
+      { value: 'Seoul', label: 'Office' },
+    ],
   },
   {
     id: 'exp-2',
@@ -38,6 +42,11 @@ export const EXPERIENCE: ExperienceItem[] = [
       'Led a hypothesis-driven market entry workstream analyzing D2C demand via a 3-stage screening approach across 600+ consumer responses; identified key purchase triggers (40% driven by TikTok FYP) to validate buyer decision model and inform GTM choices',
       'Built and sized a 2-segment customer typology, prioritizing the highest-potential segment (15.4% virality-driven) as the initial D2C target; translated insights into North America positioning, messaging, and channel strategy',
       'Synthesized analysis into an executive-ready recommendation deck proposing a college ambassador pilot as the initial acquisition wedge, defining success metrics and outlining next-step decisions',
+    ],
+    stats: [
+      { value: '600+', label: 'Responses Analyzed' },
+      { value: '40%', label: 'TikTok FYP Purchase Driver' },
+      { value: '15.4%', label: 'Virality Segment' },
     ],
   },
   {
@@ -52,6 +61,11 @@ export const EXPERIENCE: ExperienceItem[] = [
       'Restructured day-prior reporting and supply workflows across 15+ military trainings, reducing pre-training prep time by 75% (from 2 hours to 30 minutes)',
       'Authored detailed post-training compliance reports synthesizing attendance and operational data for command review',
     ],
+    stats: [
+      { value: '2,500', label: 'Unit Size' },
+      { value: '75%', label: 'Prep Time Reduced' },
+      { value: '15+', label: 'Trainings Managed' },
+    ],
   },
   {
     id: 'lead-1',
@@ -63,6 +77,10 @@ export const EXPERIENCE: ExperienceItem[] = [
     bullets: [
       'Spearheaded recruitment of 27 industry panelists and coordinated end-to-end logistics for a 100+ attendee technology-focused event within the Rotman community',
       'Reduced attendee wait time by redesigning the sign-in process from a single queue to a dual-lane system, improving operational efficiency and overall event experience',
+    ],
+    stats: [
+      { value: '27', label: 'Panelists Recruited' },
+      { value: '100+', label: 'Attendees' },
     ],
   },
   {
@@ -76,6 +94,11 @@ export const EXPERIENCE: ExperienceItem[] = [
       'Secured 10+ annual corporate partnerships (in-kind sponsorships) reducing club operational costs by 20% through structured, data-backed financial proposals',
       'Secured Karrot (hyperlocal second-hand marketplace app) as a CAD $5,000 corporate partner to support the company\'s Canadian university-market expansion, leading outreach, negotiation, and onboarding',
       'Directed end-to-end planning and execution of student-facing promotional events, coordinating cross-functional logistics and presenting campaign outcomes to senior executives',
+    ],
+    stats: [
+      { value: '10+', label: 'Corporate Partners' },
+      { value: '20%', label: 'Cost Reduction' },
+      { value: 'CAD $5K', label: 'Sponsorship Secured' },
     ],
   },
 ];

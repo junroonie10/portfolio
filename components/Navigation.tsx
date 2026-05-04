@@ -27,12 +27,12 @@ export const Navigation: React.FC<NavigationProps> = ({
   const emailUrl = SOCIAL_LINKS.find(l => l.name === 'Email')?.url || '#';
 
   return (
-    <nav className="fixed top-0 left-0 w-full h-20 bg-white/90 backdrop-blur-sm z-50 border-b border-slate-50 px-6 md:px-16 flex justify-between items-center">
+    <nav className="fixed top-0 left-0 w-full h-20 bg-[#0F1C2E] z-50 px-6 md:px-16 flex justify-between items-center shadow-md">
 
       {/* Left: Brand */}
       <button
         onClick={() => setPage('landing' as PageView)}
-        className="text-base font-bold tracking-tight text-slate-900 hover:opacity-60 transition-opacity"
+        className="font-serif text-base font-semibold text-white hover:text-[#D4A853] transition-colors tracking-wide"
       >
         {PORTFOLIO_OWNER}
       </button>
@@ -43,13 +43,16 @@ export const Navigation: React.FC<NavigationProps> = ({
           <button
             key={item.id}
             onClick={() => setPage(item.id)}
-            className={`text-sm transition-colors duration-200 ${
+            className={`relative text-sm pb-0.5 transition-colors duration-200 ${
               currentPage === item.id
-                ? 'text-slate-900 font-medium'
-                : 'text-slate-400 hover:text-slate-900 font-normal'
+                ? 'text-[#D4A853] font-medium'
+                : 'text-slate-400 hover:text-white font-light'
             }`}
           >
             {item.label}
+            {currentPage === item.id && (
+              <span className="absolute -bottom-1 left-0 right-0 h-px bg-[#D4A853] rounded-full" />
+            )}
           </button>
         ))}
       </div>
@@ -60,24 +63,24 @@ export const Navigation: React.FC<NavigationProps> = ({
           href={linkedinUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-slate-400 hover:text-slate-900 transition-colors"
+          className="text-slate-400 hover:text-white transition-colors"
           aria-label="LinkedIn"
         >
-          <Linkedin size={18} />
+          <Linkedin size={17} />
         </a>
         <a
           href={emailUrl}
-          className="text-slate-400 hover:text-slate-900 transition-colors"
+          className="text-slate-400 hover:text-white transition-colors"
           aria-label="Email"
         >
-          <Mail size={18} />
+          <Mail size={17} />
         </a>
       </div>
 
       {/* Mobile: Hamburger */}
       <button
         onClick={toggleMobileMenu}
-        className="md:hidden p-2 text-slate-900 focus:outline-none"
+        className="md:hidden p-2 text-white focus:outline-none"
         aria-label="Toggle menu"
       >
         {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -86,7 +89,7 @@ export const Navigation: React.FC<NavigationProps> = ({
       {/* Mobile Menu Overlay */}
       <div
         className={`
-          fixed inset-0 bg-white z-40 flex flex-col items-center justify-center gap-10
+          fixed inset-0 bg-[#0F1C2E] z-40 flex flex-col items-center justify-center gap-10
           transition-all duration-300 transform
           ${isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}
         `}
@@ -94,22 +97,19 @@ export const Navigation: React.FC<NavigationProps> = ({
         {navItems.map(item => (
           <button
             key={item.id}
-            onClick={() => {
-              setPage(item.id);
-              toggleMobileMenu();
-            }}
-            className={`text-2xl font-light transition-colors ${
-              currentPage === item.id ? 'text-slate-900' : 'text-slate-400 hover:text-slate-900'
+            onClick={() => { setPage(item.id); toggleMobileMenu(); }}
+            className={`font-serif text-2xl transition-colors ${
+              currentPage === item.id ? 'text-[#D4A853]' : 'text-slate-300 hover:text-white'
             }`}
           >
             {item.label}
           </button>
         ))}
         <div className="flex gap-8 mt-4">
-          <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-slate-900 transition-colors">
+          <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">
             <Linkedin size={24} />
           </a>
-          <a href={emailUrl} className="text-slate-500 hover:text-slate-900 transition-colors">
+          <a href={emailUrl} className="text-slate-400 hover:text-white transition-colors">
             <Mail size={24} />
           </a>
         </div>

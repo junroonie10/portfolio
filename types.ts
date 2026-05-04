@@ -22,6 +22,7 @@ export interface ExperienceItem {
   period: string;
   type: 'professional' | 'leadership' | 'military';
   bullets: string[];
+  stats?: { value: string; label: string }[];
 }
 
 export type PageView = 'landing' | 'about' | 'experience' | 'competitions' | 'photography';
